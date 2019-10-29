@@ -363,7 +363,7 @@ open class EMPageViewController: UIViewController, UIScrollViewDelegate {
             self.beforeViewController = self.selectedViewController
             self.selectedViewController = self.afterViewController
           
-            self.removeChildIfNeeded(self.beforeViewController)
+            self.beforeViewController?.view.removeFromSuperview()
           
             if didViewAppear {
                 self.selectedViewController?.endAppearanceTransition()
@@ -392,7 +392,7 @@ open class EMPageViewController: UIViewController, UIScrollViewDelegate {
             self.afterViewController = self.selectedViewController
             self.selectedViewController = self.beforeViewController
           
-            self.removeChildIfNeeded(self.afterViewController)
+            self.afterViewController?.view.removeFromSuperview()
           
             if didViewAppear {
                 self.selectedViewController?.endAppearanceTransition()
@@ -429,8 +429,8 @@ open class EMPageViewController: UIViewController, UIScrollViewDelegate {
             }
             
             // Remove hidden view controllers
-            self.removeChildIfNeeded(self.beforeViewController)
-            self.removeChildIfNeeded(self.afterViewController)
+            self.beforeViewController?.view.removeFromSuperview()
+            self.afterViewController?.view.removeFromSuperview()
             
             if (self.navigationDirection == .forward) {
                 self.afterViewController!.endAppearanceTransition()
